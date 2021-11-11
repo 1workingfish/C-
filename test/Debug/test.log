@@ -1,0 +1,3 @@
+﻿  test.c
+D:\C\test\test.c(18,11): warning C4477: “scanf_s”: 格式字符串“%d”需要类型“int *”的参数，但可变参数 1 拥有了类型“int”
+  test.vcxproj -> D:\C\test\Debug\test.exe
