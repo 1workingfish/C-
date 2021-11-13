@@ -1,0 +1,4 @@
+﻿  ArrayList.c
+D:\code\C-\test-11-13\ArrayList.c(10,23): warning C4133: “=”: 从“array *”到“int *”的类型不兼容
+D:\code\C-\test-11-13\ArrayList.c(105,35): warning C4047: “=”:“int”与“void *”的间接级别不同
+  test-11-13.vcxproj -> D:\code\C-\test-11-13\Debug\test-11-13.exe
