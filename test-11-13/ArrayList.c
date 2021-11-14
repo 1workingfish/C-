@@ -4,7 +4,7 @@
 
 void init_arr(array* parray, int length)
 {
-	array* base = (array*)malloc(sizeof(array) * length);
+	int* base = (int*)malloc(sizeof(int) * length);
 	if (base != NULL)
 	{
 		parray->pbase = base;
@@ -24,8 +24,8 @@ void show_arr(array* parray)
 		for (i = 0; i < parray->cnt; i++)
 		{
 			printf("%d ", parray->pbase[i]);
-			printf("\n");
 		}
+		printf("\n");
 	}
 }
 bool is_empty(array* parray)
@@ -77,7 +77,7 @@ bool insert_arr(array* parray, int pos, int val)
 	int i = 0;
 	for (i = parray->cnt; i > pos - 1; i--)
 	{
-		parray->pbase[i + 1] = parray->pbase[i];
+		parray->pbase[i] = parray->pbase[i - 1];
 	}
 	parray->pbase[pos] = val;
 	(parray->cnt)++;
@@ -91,18 +91,23 @@ int get(array* parray,int pos)
 	return i;
 }
 
-bool delete_arr(array* parray, int pos)
+bool delete_arr(array* parray, int pos,int* val)
 {
+	if (is_empty(parray) == 1)
+	{
+		return false;
+	}
 	if (pos<1 || pos>parray->cnt)
 	{
 		return false;
 	}
+	*val = parray->pbase[pos - 1];
 	int i = 0;
 	for (i = pos - 1; i < parray->cnt; i++)
 	{
 		parray->pbase[i] = parray->pbase[i + 1];
 	}
-	parray->pbase[parray->cnt] = NULL;
+	parray->pbase[parray->cnt] = 0;
 	(parray->cnt)--;
 	return true;
 }
@@ -123,5 +128,19 @@ void sort_arr(array* parray)
 				parray->pbase[j] = tmp;
 			}
 		}
+	}
+}
+void inversion_arr(array* parray)
+{
+	int i = 0;
+	int j = parray->cnt - 1;
+	int tmp = 0;
+	while (i < j)
+	{
+		tmp = parray->pbase[i];
+		parray->pbase[i] = parray->pbase[j];
+		parray->pbase[j] = tmp;
+		i++;
+		j--;
 	}
 }

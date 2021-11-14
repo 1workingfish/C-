@@ -16,16 +16,19 @@ int main()
 {
 	struct Array arr;
 	init_arr(&arr, 6);
-
+	int i = 0;
 	append_arr(&arr, 1);
 	append_arr(&arr, 5);
 	append_arr(&arr, 62);
 	append_arr(&arr, 56);
 	append_arr(&arr, 2);
 	insert_arr(&arr, 3, 78);
+	delete_arr(&arr, 2, &i);
 	//printf("%d\n", arr.cnt);
 	//show_arr(&arr);
 	sort_arr(&arr);
+	show_arr(&arr);
+	inversion_arr(&arr);
 	show_arr(&arr);
 	//if (i == 1)
 	//{

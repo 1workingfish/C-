@@ -18,12 +18,13 @@ typedef struct Array
 }array;
 
 //声明函数
-void init_arr(array* parray,int length);
-void show_arr(array* parray);
-bool is_empty(array* parray);
-bool is_full(array* parray);
-bool append_arr(array* parray, int val);
-bool insert_arr(array* parray, int pos, int val);
-int get(array* parray,int pos);
-bool delete_arr(array* parray, int pos);
-void sort_arr(array* parray);
+void init_arr(array* parray,int length);//初始化元素并创建动态空间
+void show_arr(array* parray);//打印元素
+bool is_empty(array* parray);//判断是否为空
+bool is_full(array* parray);//判断是否为满
+bool append_arr(array* parray, int val);//追加元素
+bool insert_arr(array* parray, int pos, int val);//插入元素
+int get(array* parray,int pos);//获取元素
+bool delete_arr(array* parray, int pos,int* val);//删除元素并返回删除元素的值
+void sort_arr(array* parray);//排序数组
+void inversion_arr(array* parray);//逆序数组
