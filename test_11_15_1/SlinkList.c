@@ -70,36 +70,81 @@ int length_list(PNODE pHead)
 
 bool insert_list(PNODE pHead,int pos,int val)
 {
-	PNODE p = pHead->pNext;
+	//if (pos > 1 || pos < length_list(pHead))
+	//{
+	//	return false;
+	//}
+	//PNODE p = pHead->pNext;
+	//int i = 0;
+	//for (i = 0; i < pos; i++)
+	//{
+	//	p = p->pNext;
+	//}
+	//PNODE pNew = (PNODE)malloc(sizeof(NODE));
+	//if (pNew == NULL)
+	//{
+	//	printf("%s\n", strerror(errno));
+	//	return false;
+	//}
+	//PNODE pn = p->pNext;
+	//p->pNext = pNew;
+	//pNew->date = val;
+	//pNew->pNext = pn;
+	//return true;
+
 	int i = 0;
-	for (i = 0; i < pos; i++)
+	PNODE p = pHead;
+	while (p != NULL && i < pos - 1)
 	{
 		p = p->pNext;
+		i++;
+	}
+	if (i > pos - 1 || p == NULL)
+	{
+		return false;
 	}
 	PNODE pNew = (PNODE)malloc(sizeof(NODE));
 	if (pNew == NULL)
 	{
 		printf("%s\n", strerror(errno));
-		return false;
 	}
-	PNODE pn = p->pNext;
-	p->pNext = pNew;
 	pNew->date = val;
-	pNew->pNext = pn;
+	PNODE q = p->pNext;
+	p->pNext = pNew;
+	pNew->pNext = q;
 	return true;
 }
 
-bool delete_list(PNODE pHead, int pos)
+bool delete_list(PNODE pHead, int pos,int * pVal)
 {
-	PNODE p = pHead->pNext;
+	//PNODE p = pHead->pNext;
+	//int i = 0;
+	//for (i = 0; i < pos - 1; i++)
+	//{
+	//	p = p->pNext;
+	//}
+	//PNODE pd = p->pNext;
+	//*pval= pd->date;
+	//p->pNext = pd->pNext;
+	//free(pd);
+	//pd = NULL;
+	//return true;
 	int i = 0;
-	for (i = 0; i < pos - 1; i++)
+	PNODE p = pHead;
+	while (p ->pNext!= NULL && i < pos - 1)
 	{
 		p = p->pNext;
+		i++;
 	}
-	PNODE pd = p->pNext;
-	p->pNext = pd->pNext;
-	return true;
+	if (p->pNext == NULL || i > pos - 1)
+	{
+		return false;
+	}
+	PNODE q = p->pNext;//要删除的结点
+	*pVal = q->date;
+	p->pNext = q->pNext;
+	free(q);
+	q = NULL;
 }
 
 void sort_list(PNODE pHead)
